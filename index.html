@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18 años de Nakama 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ====================================================
+       AUDIO DE FONDO
+       Coloca tu archivo "youth-KIHYUN.mp3" en la misma carpeta
+  ===================================================== -->
+  <audio id="bgAudio" loop>
+    <source src="youth-KIHYUN.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Botón flotante para mute/unmute -->
+  <button id="audioToggle" class="audio-btn" aria-label="Toggle música">
+    <span id="audioIcon">🔇</span>
+  </button>
+
+  <!-- ====================================================
+       PARTÍCULAS DECORATIVAS (Nemophila pétalos)
+  ===================================================== -->
+  <div class="particles" id="particles"></div>
+
+  <!-- ====================================================
+       1. GOLDEN TICKET MODAL
+  ===================================================== -->
+  <div id="goldenTicketOverlay" class="ticket-overlay">
+    <div class="ticket-container" id="ticketContainer">
+      <!-- Mitad superior del billete -->
+      <div class="ticket-half ticket-top">
+        <div class="ticket-border-top"></div>
+        <div class="ticket-logo">✦ INVITACIÓN EXCLUSIVA ✦</div>
+        <div class="ticket-wonka-symbol">🎩</div>
+        <h1 class="ticket-title">A los 18 años de</h1>
+        <h2 class="ticket-name">Nakama</h2>
+        <div class="ticket-deco-line"></div>
+        <p class="ticket-subtitle">Noa Lobos · 25 de Abril, 2026</p>
+        <div class="ticket-flowers">𓆸 ✿ 𓆸 ✿ 𓆸</div>
+      </div>
+      <!-- Línea de perforación -->
+      <div class="ticket-perforation">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <!-- Mitad inferior del billete -->
+      <div class="ticket-half ticket-bottom">
+        <p class="ticket-desc">Este billete es tu llave a una celebración única.<br/>Haz clic para abrirlo.</p>
+        <div class="ticket-shine"></div>
+        <button class="ticket-btn" id="openTicketBtn">
+          ✦ Abrir mi invitación ✦
+        </button>
+        <div class="ticket-footer-text">· Una función sólo para vos ·</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       CONTENIDO PRINCIPAL (oculto hasta cerrar el ticket)
+  ===================================================== -->
+  <main id="mainContent" class="main-hidden">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg-deco"></div>
+      <div class="hero-content">
+        <p class="hero-pre">Feliz cumpleaños,</p>
+        <h1 class="hero-name">Nakama</h1>
+        <p class="hero-age">18 años · 25 de abril de 2026</p>
+        <div class="hero-flowers">
+          <!-- SVG decorativo Nemophila (baby's blue eyes) -->
+          <svg viewBox="0 0 200 60" class="nemophila-svg">
+            <circle cx="20" cy="30" r="10" fill="#40c9c0" opacity="0.6"/>
+            <circle cx="20" cy="30" r="5" fill="#fff" opacity="0.8"/>
+            <circle cx="60" cy="30" r="10" fill="#40c9c0" opacity="0.5"/>
+            <circle cx="60" cy="30" r="5" fill="#fff" opacity="0.8"/>
+            <circle cx="100" cy="20" r="13" fill="#2ea8a3" opacity="0.7"/>
+            <circle cx="100" cy="20" r="6" fill="#fff" opacity="0.9"/>
+            <circle cx="140" cy="30" r="10" fill="#40c9c0" opacity="0.5"/>
+            <circle cx="140" cy="30" r="5" fill="#fff" opacity="0.8"/>
+            <circle cx="180" cy="30" r="10" fill="#40c9c0" opacity="0.6"/>
+            <circle cx="180" cy="30" r="5" fill="#fff" opacity="0.8"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         2. LORE DE NAKI — LÍNEA DE TIEMPO
+    ===================================================== -->
+    <section class="timeline-section" id="lore">
+      <div class="section-header">
+        <h2 class="section-title">El Lore de Naki</h2>
+        <p class="section-subtitle">Una historia épica, contada con amor</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Hito 1 -->
+        <div class="timeline-item" data-side="left">
+          <div class="timeline-dot">🌟</div>
+          <div class="timeline-card">
+            <span class="timeline-date">25 / 04 / 2008 · 21:10 hs</span>
+            <h3>El Gran Nacimiento</h3>
+            <p>Interrumpió a su mamá viendo un partido de Central contra Estudiantes. Central PERDIÓ 3 A 1, malísimos, pero nació el hijo más hermoso.</p>
+          </div>
+        </div>
+
+        <!-- Hito 2 -->
+        <div class="timeline-item" data-side="right">
+          <div class="timeline-dot">🍼</div>
+          <div class="timeline-card">
+            <span class="timeline-date">La Era Wawita</span>
+            <h3>Los Broncoespasmos</h3>
+            <p>Una etapa de batallas respiratorias épicas. El tratamiento de calcio dejó sus huellas: uñas y dientes frágiles como porcelana fina... y rodillas de cristal.</p>
+            <!-- Botón especial con alert -->
+            <button class="knee-btn" id="kneeBtn">⚔️ Atacar rodillas de Naki</button>
+          </div>
+        </div>
+
+        <!-- Hito 3 -->
+        <div class="timeline-item" data-side="left">
+          <div class="timeline-dot">🎮</div>
+          <div class="timeline-card">
+            <span class="timeline-date">2019</span>
+            <h3>El Despertar del Roleplay</h3>
+            <p>Comenzó su viaje con Bon de FNAFHS, transitó por Countryhumans y eventualmente llegó a Genshin Impact, donde Chongyun fue su primer main... hasta que Kaeya tomó el control definitivamente.</p>
+          </div>
+        </div>
+
+        <!-- Hito 4 -->
+        <div class="timeline-item" data-side="right">
+          <div class="timeline-dot">🎃</div>
+          <div class="timeline-card">
+            <span class="timeline-date">30 / 10 / 2025</span>
+            <h3>La Noche de Halloween en BTR</h3>
+            <p>La primera interacción entre Kaeya y Calcharo en la fiesta de Halloween de BTR. El comienzo de un amor devoto y de una hermosa amistad.</p>
+          </div>
+        </div>
+
+        <!-- Hito 5 -->
+        <div class="timeline-item" data-side="left">
+          <div class="timeline-dot">🎮</div>
+          <div class="timeline-card">
+            <span class="timeline-date">30 / 11 / 2025</span>
+            <h3>Nace una Leyenda</h3>
+            <p>La creación de nuestro grupito inseparable "Fnaf xk estamos traumados", actualmente "Nintendo 3Ds nintendo no nos demandes". El inicio de las llamadas más lindas de compañía.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         3. ALTAR DE GUSTOS FIJOS — CARRUSEL
+    ===================================================== -->
+    <section class="carousel-section" id="altar">
+      <div class="section-header">
+        <h2 class="section-title">El Altar de los Gustos Fijos</h2>
+        <p class="section-subtitle">Un panteón cuidadosamente curado</p>
+      </div>
+
+      <!-- Medidor de Bias -->
+      <div class="bias-meter">
+        <div class="bias-meter-label">Medidor de Bias™</div>
+        <div class="bias-gauge">
+          <div class="bias-gauge-bg">
+            <div class="bias-gauge-fill"></div>
+            <div class="bias-needle" id="biasNeedle"></div>
+            <div class="bias-center-dot"></div>
+          </div>
+          <div class="bias-scale">
+            <span>Cambia de bias</span>
+            <span>⚠️ PELIGRO</span>
+            <span>Gustos fijos</span>
+          </div>
+        </div>
+        <p class="bias-warning">⚠️ Gustos fijos detectados — el sujeto casi nunca cambia de bias</p>
+      </div>
+
+      <!-- Carrusel -->
+      <div class="carousel-wrapper">
+        <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Anterior">&#8592;</button>
+        <div class="carousel-track-container">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- TARJETAS DEL CARRUSEL
+                 Reemplaza src="..." con la ruta a tus imágenes locales.
+                 Ejemplo: src="assets/minhyuk.jpg"
+            -->
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/jay.jpg" alt="Jay de Enhypen" onerror="this.style.background='#2a6b6a';this.alt='Jay'"/>
+                <div class="card-overlay">Jay</div>
+              </div>
+              <div class="card-info">
+                <h4>Jay</h4>
+                <p>Enhypen</p>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/hikaru.jpg" alt="Hikaru de Kep1er" onerror="this.style.background='#2a6b6a'"/>
+                <div class="card-overlay">Hikaru</div>
+              </div>
+              <div class="card-info">
+                <h4>Hikaru</h4>
+                <p>Kep1er</p>
+              </div>
+            </div>
+
+            <!-- ★ MINHYUK — EL CENTRO INAMOVIBLE ★ -->
+            <div class="carousel-card carousel-card--center" id="minhyukCard">
+              <div class="card-crown">👑</div>
+              <div class="card-img-wrap">
+                <img src="assets/minhyuk.jpg" alt="Minhyuk de Monsta X" onerror="this.style.background='#1a4a48'"/>
+                <div class="card-overlay">TOP 1</div>
+              </div>
+              <div class="card-info">
+                <h4>Minhyuk</h4>
+                <p>Monsta X · Top 1 Bias</p>
+                <span class="card-badge">Inamovible</span>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/hongjoong.jpg" alt="Hongjoong de Ateez" onerror="this.style.background='#2a6b6a'"/>
+                <div class="card-overlay">Hongjoong</div>
+              </div>
+              <div class="card-info">
+                <h4>Hongjoong</h4>
+                <p>Ateez</p>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/ray.jpg" alt="Ray de The Promised Neverland" onerror="this.style.background='#2a6b6a'"/>
+                <div class="card-overlay">Ray</div>
+              </div>
+              <div class="card-info">
+                <h4>Ray</h4>
+                <p>The Promised Neverland</p>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/fennekin.jpg" alt="Fennekin Pokémon" onerror="this.style.background='#2a6b6a'"/>
+                <div class="card-overlay">Fennekin</div>
+              </div>
+              <div class="card-info">
+                <h4>Fennekin</h4>
+                <p>Pokémon</p>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/ron.jpg" alt="Ron Weasley" onerror="this.style.background='#2a6b6a'"/>
+                <div class="card-overlay">Ron</div>
+              </div>
+              <div class="card-info">
+                <h4>Ron Weasley</h4>
+                <p>Harry Potter</p>
+              </div>
+            </div>
+
+            <div class="carousel-card">
+              <div class="card-img-wrap">
+                <img src="assets/newt.jpg" alt="Newt Scamander" onerror="this.style.background='#2a6b6a'"/>
+                <div class="card-overlay">Newt</div>
+              </div>
+              <div class="card-info">
+                <h4>Newt Scamander</h4>
+                <p>Animales Fantásticos</p>
+              </div>
+            </div>
+
+          </div><!-- /carousel-track -->
+        </div>
+        <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         4. TEST DE NAKAMA — MINI-JUEGO
+    ===================================================== -->
+    <section class="quiz-section" id="quiz">
+      <div class="section-header">
+        <h2 class="section-title">El Test de Nakama</h2>
+        <p class="section-subtitle">¿Cuánto sabés sobre vos mismo?</p>
+      </div>
+
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizProgressBar"></div>
+        </div>
+        <p class="quiz-counter" id="quizCounter">Pregunta 1 de 10</p>
+
+        <div class="quiz-question-wrap" id="quizQuestionWrap">
+          <!-- Las preguntas se inyectan por JS -->
+        </div>
+
+        <div class="quiz-nav">
+          <button class="quiz-btn quiz-btn--prev" id="quizPrev" disabled>← Anterior</button>
+          <button class="quiz-btn quiz-btn--next" id="quizNext">Siguiente →</button>
+          <button class="quiz-btn quiz-btn--submit hidden" id="quizSubmit">✨ Ver mi resultado</button>
+        </div>
+
+        <div class="quiz-result hidden" id="quizResult"></div>
+      </div>
+
+      <!-- ====================================================
+           5. RECOMPENSA OCULTA
+      ===================================================== -->
+      <div class="reward-section hidden" id="rewardSection">
+        <div class="reward-flowers">𓆸 ✿ 𓆸 ✿ 𓆸 ✿ 𓆸</div>
+        <div class="reward-box">
+          <div class="reward-icon">🌸</div>
+          <h2 class="reward-title">¡Feliz Cumpleaños, Nakama!</h2>
+          <p class="reward-message">
+            Todavía recuerdo ese primer mensaje para ti, decirte que no estabas solo, que tenía intenciones de conocerte y así poder ser tu amiga.
+            Ahora estamos aquí, contigo siendo uno de mis mejores amigos, sin dudarlo, te convertiste en una persona muy especial para mi, Noa.
+            Gracias, por todo en realidad, por haber aceptado mis palabras ese día, por amar a mi Calcharo y entregarme a tu Kaeya,
+            <em>gracias por confiar en mi y ser mi amigo, por quedarte en cada llamada, por estar siempre pendiente. Gracias por tu hermosa amistad, gracias por seguir vivo.</em> 
+            Espero que este cumpleaños te colme de bendiciones, deseo poder celebrar tu cumpleaños muchos años más, deseo más charlas de madrugada, más bromas entre todos,
+            más roles juntos y por sobre todo, más recuerdos junto a ti.
+          </p>
+          <!-- 
+            Reemplaza el href con el enlace real de tu regalo 
+          -->
+          <a href="https://canva.link/ehmbqpt5iqcdp86" target="_blank" class="reward-btn">
+            🎁 Tu regalo
+          </a>
+        </div>
+        <div class="reward-flowers">𓆸 ✿ 𓆸 ✿ 𓆸 ✿ 𓆸</div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================
+         6. FOOTER
+    ===================================================== -->
+    <footer class="footer">
+      <p>© 2026. Sitio desarrollado de forma independiente con todo mi cariño para mi mejor amigo.</p>
+      <div class="footer-flowers">𓆸 ✿ 𓆸</div>
+    </footer>
+
+  </main><!-- /mainContent -->
+
+  <!-- JS principal -->
+  <script src="app.js"></script>
+</body>
+</html>
